@@ -21,7 +21,8 @@ public class Address {
 
     private String lineOne;
     private String lineTwo;
-    private String state;
-    private String postalCode;
+    private String city;
+    private String county;
+    private String postCode;
     private String country;
 }
