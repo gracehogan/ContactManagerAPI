@@ -5,21 +5,19 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Personal extends Contact{
-
+public class Work extends Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "personal_seq")
+            generator = "work_seq")
     @SequenceGenerator(
-            name= "personal_seq",
-            sequenceName = "personal_seq",
+            name = "work_seq",
+            sequenceName = "work_seq",
             initialValue = 1,
             allocationSize = 1
     )
     Long id;
 
-    public Personal() {
-        this.setType(Type.PERSONAL);
+    public Work() {
+        this.setType(Type.WORK);
     }
 }
-
