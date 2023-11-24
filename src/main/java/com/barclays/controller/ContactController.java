@@ -4,9 +4,7 @@ import com.barclays.model.Contact;
 import com.barclays.service.ContactService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -32,4 +30,8 @@ public class ContactController {
         return contactService.findById(id);
     }
 
+    @PostMapping("/contacts")
+    public Contact createContact(@RequestBody Contact contact) {
+        return contactService.save(contact);
+    }
 }

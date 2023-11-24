@@ -9,4 +9,6 @@ public interface ContactService {
     List<Contact> findAll();
 
     Contact findById(long id);
+
+    Contact save(Contact c);
 }

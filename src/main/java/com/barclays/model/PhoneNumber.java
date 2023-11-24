@@ -9,7 +9,7 @@ import lombok.Data;
 public class PhoneNumber {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    @GeneratedValue(strategy = GenerationType.IDENTITY,
             generator = "phone_number_seq")
     @SequenceGenerator(
             name= "phone_number_seq",
@@ -24,5 +24,6 @@ public class PhoneNumber {
 
     @JsonBackReference
     @ManyToOne
+    @JoinColumn(name = "contact_id")
     Contact contact;
 }

@@ -30,7 +30,7 @@ public class Contact {
     private Address address;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "contact")
+    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PhoneNumber> phoneNumbers;
 
     @Enumerated (EnumType.STRING)

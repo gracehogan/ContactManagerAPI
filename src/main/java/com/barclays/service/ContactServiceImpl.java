@@ -29,4 +29,9 @@ public class ContactServiceImpl implements ContactService {
         Optional<Contact> personalContact = contactRepository.findById(id);
         return personalContact.orElseGet(()-> new Contact());
     }
+
+    @Override
+    public Contact save(Contact c) {
+        return contactRepository.save(c);
+    }
 }

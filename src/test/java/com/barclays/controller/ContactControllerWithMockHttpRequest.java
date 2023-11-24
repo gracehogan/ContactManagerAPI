@@ -1,6 +1,8 @@
 package com.barclays.controller;
 
+import com.barclays.model.Address;
 import com.barclays.model.Contact;
+import com.barclays.model.PhoneNumber;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -50,5 +55,25 @@ public class ContactControllerWithMockHttpRequest {
                 () -> assertEquals("456 Street", contacts[1].getAddress().getLineOne())
         );
 
+    }
+
+    @Test
+    void testCreateContact() throws Exception {
+        Contact contact = new Contact();
+        contact.setName("Bob");
+
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.post("/contacts")
+                        .content(mapper.writeValueAsString(contact))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        MvcResult result = resultActions.andReturn();
+        String contentAsString = result.getResponse().getContentAsString();
+
+        contact = mapper.readValue(contentAsString, Contact.class);
+
+
+        assertEquals("Bob", contact.getName());
     }
 }
