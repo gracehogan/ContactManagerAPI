@@ -1,5 +1,6 @@
 package com.barclays.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class Contact {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "contact")
     private List<PhoneNumber> phoneNumbers;
 

@@ -1,5 +1,6 @@
 package com.barclays.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -21,6 +22,7 @@ public class PhoneNumber {
     private String countryCode;
     private String number;
 
+    @JsonBackReference
     @ManyToOne
     Contact contact;
 }
