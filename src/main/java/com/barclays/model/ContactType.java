@@ -1,6 +1,6 @@
 package com.barclays.model;
 
-public enum Type {
+public enum ContactType {
 
     PERSONAL,
     WORK;

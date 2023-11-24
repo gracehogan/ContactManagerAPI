@@ -6,10 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 @Data
-public abstract class Contact {
+public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
@@ -33,13 +32,13 @@ public abstract class Contact {
     private List<PhoneNumber> phoneNumbers;
 
     @Enumerated (EnumType.STRING)
-    private Type type;
+    private ContactType contactType;
 
-    public String getType() {
-        if (this.type == null) {
+    public String getContactType() {
+        if (this.contactType == null) {
             return null;
         }
-        return this.type.name();
+        return this.contactType.name();
     }
 
 }

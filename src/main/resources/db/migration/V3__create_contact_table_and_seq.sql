@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS CONTACT
     email VARCHAR(255),
     address_id BIGINT,
     phone_numbers_id BIGINT,
-    type VARCHAR(255)
+    contact_type VARCHAR(255)
 );
 
 CREATE SEQUENCE contact_seq
